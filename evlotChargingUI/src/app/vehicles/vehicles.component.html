@@ -1,0 +1,98 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Vehicle Details</h4>
+                        <p class="category">Kindly Book Charging appointment after Adding Vehicle Details</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                          <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr *ngFor="let vehicleDetail of vehicleDetailsList">
+                                        <td>{{vehicleDetail.vehicleDetailId}}</td>
+                                        <td>{{vehicleDetail.registrationNumber}}</td>
+                                        <td>{{vehicleDetail.vehicle.brandName}}</td>
+                                        <td>{{vehicleDetail.vehicle.modelName}}</td>
+                                        <td>{{vehicleDetail.vehicle.modelNumber}}</td>
+                                        <td>{{vehicleDetail.vehicle.batteryCapacity}}</td>
+                                    </tr>
+                                </tbody>
+                          </table>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div *ngIf="!showAddVehicleSection" class="box">
+            <input id="submit" type="submit" name="" value="Add Vehicle" (click)="showAddVehicle()">
+        </div>
+
+        <div></div>
+
+
+        <div *ngIf="showAddVehicleSection">
+            
+            <div class="form-group">  
+                <label for="brands">Brand List:</label>  
+                <select  #myBrandSelected class="form-control" (change)="brandChange(myBrandSelected.value)">  
+                    <option disabled>Select Brand Name</option>  
+                    <option>Choose Brand Name</option>  
+                    <option *ngFor="let brand of brandList"
+                    >{{brand}}</option>  
+                </select>  
+                
+            </div>  
+        </div>
+
+        <div *ngIf="showModelsSection">
+            
+            <div class="form-group">  
+                <label for="models">Models List:</label>  
+                
+                <select  #myModelSelected class="form-control" (change)="modelChange(myModelSelected.value)" >  
+                    <option disabled>Select Model</option>  
+                    <option>Choose Model</option>  
+                        <option  *ngFor="let model of modelList"
+                        >{{model.modelName}}
+                    
+                    </option>  
+                    
+                    <!-- <option>Choose Brand Name</option>   -->
+                    
+                </select>  
+                
+            </div>  
+
+            
+<div class="box">
+<form [formGroup]="vehicleForm">
+    <div class="input-box">
+      <input id="registration" type="text" name="registration" required="" formControlName="registration">
+      <label>Enter Registration Number</label>
+    </div>
+    
+</form>
+</div>
+            
+            <div class="box">
+                <input id="submit" type="submit" name="" value="Register" (click)="registerVehicle()">
+              &nbsp;  <input id="submit" type="submit" name="" value="Cancel" (click)="cancelRegistration()">
+            </div>
+
+
+
+        </div>
+       
+
+    </div>
+</div>

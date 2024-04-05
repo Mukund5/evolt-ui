@@ -1,0 +1,84 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Search</h4>
+                        <p class="category">Kindly Enter the Pincode where you want to schedule Charging appointment</p>
+                    </div>
+                    <div class="box">
+                        <form [formGroup]="searchForm">
+                            <div class="input-box">
+
+                                
+
+                              <input style="border-color: black;" id="pincode" type="number" name="pincode" required="" formControlName="pincode" maxlength="6" pattern="\d{6}">
+                              <label>Pincode </label>
+
+                              
+                              <input type="date" id="myDateValue1" (change)="onDateChange($event)">
+
+<!--                                
+                                <mat-form-field>
+                                    <mat-label>Choose a date</mat-label>
+                                  
+                                    <input matInput [matDatepicker]="picker">
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                  
+                                  </mat-form-field> 
+
+                                  <div class="someClass">
+                                    <mat-form-field appearance="outline">
+                                       <mat-label>Label</mat-label>
+                                       <input (dateChange)="onDateChange($event)"  matInput [matDatepicker]="picker">
+                                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                       <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                 </div>  -->
+
+                            </div>
+
+
+                            <!-- <div class="input-box">
+                              <input id="user-pass" type="password" name="password" required="" formControlName="password">
+                              <label>Password</label>
+                            </div> -->
+                            <input id="submit" type="submit" name="" value="Search" (click)="searchByPincode()">
+                          </form>
+
+                    </div>
+                     <div  *ngIf="showChargingStations" class="content table-responsive table-full-width box">
+                          <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr *ngFor="let chargingStation of chargingStationsList">
+                                        <td>{{chargingStation.chargingStationId}}</td>
+                                        <td>{{chargingStation.stationName}}</td>
+                                        <td>{{chargingStation.address}}</td>
+                                        <td>{{chargingStation.district}}</td>
+                                        <td>{{chargingStation.state}}</td>
+                                        <td>{{chargingStation.geo_location}}</td>
+                                        <td>
+                                            <a [routerLink]="['../ports']"  style="cursor: pointer;" >
+                                            <input id="submit" type="submit" name="" value="Select" (click)="selectedChargingStation(chargingStation)">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                          </table>
+
+                    </div> 
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Booking Confirmed</h4>
+                        <p class="category">Kindly Note down the Booking ID for future reference</p>
+    
+                        <br>
+                        <br>
+<div>
+
+Thank you. Your Order has been confirmed!!
+
+<img class="avatar border-gray" src="assets/img/checked.png" alt="...">
+<br>
+<br>
+<label>Order Details</label>
+
+<br>
+Booking ID: {{bookingObject.appointment_id}}
+<br>
+Appointment Date: {{bookingObject.appointment_date}}
+<br>
+Appointment Start Time: {{bookingObject.start_time}}
+<br>
+Appointment End Time: {{bookingObject.end_time}}
+<br>
+Charging Type: {{bookingObject.charging_type}}
+<br>
+Total Fare(Incl. GST): {{bookingObject.total_fare}}
+<br>
+Booking Status: {{bookingObject.status}}
+<br>
+
+</div>
+
+<br>
+<div  class="box">
+    <input id="submit" type="submit" name="" value="View Bookings" (click)="viewBookings()">
+</div> 
+
+
+                        
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+        </div>
+
+
+
+        
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Charging Port Details</h4>
+                        <p class="category">Kindly Select the Charging Port</p>
+                        <p class="category">Rates are mentioned in Rupees per hour</p>
+                    </div>
+                    
+                     <div  *ngIf="showChargingPorts" class="content table-responsive table-full-width box">
+                          <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr *ngFor="let chargingPort of chargingPortsList">
+                                        <td>{{chargingPort.chargingPointId}}</td>
+                                        <td>
+                                            
+                                                <!-- <input type="radio" value="normal" formControlName="chargingType"> -->
+
+                                                <input type="radio" name="chargingType" 
+                                                [checked] 
+                                                [value]="chargingPort.rateNormalCharging" 
+                                                (change)="onChargingTypeChange(chargingPort,'normal')">
+                                                &nbsp;
+                                                <span>{{chargingPort.rateNormalCharging}}</span>
+                                            
+                                        </td>
+                                        <td>
+<div *ngIf="chargingPort.supportsFastCharging=='Y'">
+    <input type="radio" name="chargingType" 
+     
+    [value]="chargingPort.rateFastCharging" 
+    (change)="onChargingTypeChange(chargingPort,'fast')">
+    &nbsp;
+    <span>{{chargingPort.rateFastCharging}}</span>
+</div>
+<div *ngIf="chargingPort.supportsFastCharging=='N'">NA</div>
+                                        </td>
+                                        <td>
+                                            <div *ngIf="chargingPort.supportsSuperFastCharging=='Y'">
+                                                <input type="radio" name="chargingType" 
+                                                [value]="chargingPort.rateSuperFastCharging" 
+                                                (change)="onChargingTypeChange(chargingPort,'superfast')">
+                                                &nbsp;
+                                                <span>{{chargingPort.rateSuperFastCharging}}</span>
+                                            </div>
+                                            <div *ngIf="chargingPort.supportsSuperFastCharging=='N'">NA</div>
+                                        </td>
+                                            
+                                       <!-- 
+                                        <td> <input id="submit" type="submit" name="" value="Select"></td>
+
+                                        -->
+                                    </tr>
+                                
+                                </tbody>
+                          </table>
+
+                          
+                            <input id="submit" type="submit" name="" value="Select" (click)="checkSlotsAvailability()">
+                          
+
+
+                           
+                    </div> 
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

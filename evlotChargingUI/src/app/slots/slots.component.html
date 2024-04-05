@@ -1,0 +1,76 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Charging Slot Details</h4>
+                        <p class="category">Kindly Select the Starting Time Slot</p>
+                        
+                    </div>
+                    
+                     <div  *ngIf="showChargingSlots" class="content table-responsive table-full-width box">
+                          <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr *ngFor="let chargingSlot of chargingSlotsList">
+                                        
+                                        <td [ngStyle]="{'background-color':chargingSlot.status === 'Available' ? '#AFE1AF' : '#F88379' }">
+
+                                            <input *ngIf="chargingSlot.status === 'Available'" type="radio" name="chargingType" 
+                                            [checked] 
+                                            [value]="chargingSlot" 
+                                            (change)="onChargingSlotSelect(chargingSlot)">
+                                            &nbsp;
+                                            <span>{{chargingSlot.startTime}}</span>
+
+
+
+                                        </td>
+                                        
+                                            
+                                                <!-- <input type="radio" value="normal" formControlName="chargingType"> -->
+
+                                               
+                                        
+                                    
+                                            
+                                       <!-- 
+                                        <td> <input id="submit" type="submit" name="" value="Select"></td>
+
+                                        -->
+                                    </tr>
+                                
+                                </tbody>
+                          </table>
+
+                          <div class="form-group">  
+                            <label for="duration">Duration:</label>  
+                            <select  #durationSelected class="form-control" (change)="durationChange(durationSelected.value)">  
+                                <option disabled>Select Duration</option>  
+                                <option>Choose Duration</option>  
+                                <option *ngFor="let duration of durationsList"
+                                >{{duration}}</option>  
+                            </select>  
+                            
+                        </div> 
+
+                           <input id="submit" type="submit" name="" value="Book" 
+                           (click)="checkAllInputPresent()"
+                           >
+                    </div> 
+                </div>
+            </div>
+            
+        </div>
+
+
+
+        
+    </div>
+</div>
